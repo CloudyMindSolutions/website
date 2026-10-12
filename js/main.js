@@ -64,11 +64,11 @@
       }
     });
 
-    // Inject Floating Cloud with Kebab Sauce Ooze
-    initFloatingKebabCloud();
+    // Inject Floating Rainbow Cat
+    initFloatingRainbowCat();
   });
 
-  function initFloatingKebabCloud() {
+  function initFloatingRainbowCat() {
     if (document.querySelector('.sky-container')) return;
 
     const sky = document.createElement('div');
@@ -76,14 +76,46 @@
     sky.setAttribute('aria-hidden', 'true');
 
     sky.innerHTML = `
-      <div class="floating-cloud-track" title="Hover over the cloud for kebab sauce!">
-        <div class="cloud-body">
-          <span class="cloud-label">KEBAB</span>
+      <div class="floating-cat-track" title="Rainbow Cat!">
+        <div class="rainbow-trail">
+          <div class="rainbow-ribbon ribbon-red"></div>
+          <div class="rainbow-ribbon ribbon-orange"></div>
+          <div class="rainbow-ribbon ribbon-yellow"></div>
+          <div class="rainbow-ribbon ribbon-green"></div>
+          <div class="rainbow-ribbon ribbon-blue"></div>
+          <div class="rainbow-ribbon ribbon-purple"></div>
         </div>
-        <div class="sauce-ooze-container">
-          <div class="sauce-stream sauce-stream-1"></div>
-          <div class="sauce-stream sauce-stream-2"></div>
-          <div class="sauce-stream sauce-stream-3"></div>
+        <div class="cat-character">
+          <div class="cat-tail"></div>
+          <div class="cat-body">
+            <div class="cat-sprinkles">
+              <span class="sprinkle s1"></span>
+              <span class="sprinkle s2"></span>
+              <span class="sprinkle s3"></span>
+              <span class="sprinkle s4"></span>
+            </div>
+          </div>
+          <div class="cat-head">
+            <div class="cat-ear ear-left"></div>
+            <div class="cat-ear ear-right"></div>
+            <div class="cat-face">
+              <span class="cat-eye eye-left"></span>
+              <span class="cat-eye eye-right"></span>
+              <span class="cat-nose"></span>
+              <span class="cat-cheeks"></span>
+            </div>
+          </div>
+          <div class="cat-paws">
+            <span class="cat-paw paw-1"></span>
+            <span class="cat-paw paw-2"></span>
+            <span class="cat-paw paw-3"></span>
+            <span class="cat-paw paw-4"></span>
+          </div>
+          <div class="sparkles-container">
+            <span class="sparkle sp1">✨</span>
+            <span class="sparkle sp2">⭐</span>
+            <span class="sparkle sp3">✨</span>
+          </div>
         </div>
       </div>
     `;

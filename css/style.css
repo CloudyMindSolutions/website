@@ -783,175 +783,247 @@ main {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 95px;
+  height: 90px;
   pointer-events: none;
   z-index: 9999;
   overflow: visible;
 }
 
-.floating-cloud-track {
+.floating-cat-track {
   position: absolute;
-  top: 12px;
-  left: -180px;
-  animation: floatCloudAcross 26s linear infinite;
+  top: 14px;
+  left: -220px;
+  animation: floatCatAcross 22s linear infinite;
   pointer-events: auto;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
-@keyframes floatCloudAcross {
+@keyframes floatCatAcross {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(100vw + 260px));
+    transform: translateX(calc(100vw + 320px));
   }
 }
 
-/* Cloud visual shape */
-.cloud-body {
-  position: relative;
+/* Rainbow Trail trailing behind the cat */
+.rainbow-trail {
+  display: flex;
+  flex-direction: column;
   width: 110px;
-  height: 40px;
-  background: #ffffff;
-  border-radius: 40px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12), inset 0 -3px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.25s ease, filter 0.25s ease;
-  user-select: none;
-}
-
-.cloud-body::before,
-.cloud-body::after {
-  content: "";
-  position: absolute;
-  background: #ffffff;
-  border-radius: 50%;
-}
-
-.cloud-body::before {
-  width: 50px;
-  height: 50px;
-  top: -24px;
-  left: 18px;
-}
-
-.cloud-body::after {
-  width: 36px;
   height: 36px;
-  top: -16px;
-  left: 54px;
+  margin-right: -4px;
+  overflow: hidden;
+  border-radius: 4px 0 0 4px;
+  animation: rainbowWave 0.6s ease-in-out infinite alternate;
 }
 
-/* Sauce nozzle indicators */
-.cloud-label {
-  position: absolute;
-  bottom: 6px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 700;
-  color: #b91c1c;
-  letter-spacing: 0.5px;
-  opacity: 0.85;
-  pointer-events: none;
+.rainbow-ribbon {
+  flex: 1;
+  width: 100%;
+}
+
+.ribbon-red { background: #ef4444; }
+.ribbon-orange { background: #f97316; }
+.ribbon-yellow { background: #facc15; }
+.ribbon-green { background: #22c55e; }
+.ribbon-blue { background: #3b82f6; }
+.ribbon-purple { background: #a855f7; }
+
+@keyframes rainbowWave {
+  0% {
+    transform: skewY(-2deg) translateY(-2px);
+  }
+  100% {
+    transform: skewY(2deg) translateY(2px);
+  }
+}
+
+/* Cat Character Container */
+.cat-character {
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+  animation: catBob 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes catBob {
+  0% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}
+
+.floating-cat-track:hover .cat-character {
+  transform: scale(1.15) rotate(-3deg);
+}
+
+.floating-cat-track:hover .rainbow-trail {
+  width: 180px;
+  filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.7));
+}
+
+/* Cat Body / Toast */
+.cat-body {
+  position: relative;
+  width: 52px;
+  height: 42px;
+  background: #fbcfe8;
+  border: 3px solid #db2777;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
 }
 
-:root[data-theme="dark"] .cloud-body,
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .cloud-body {
-    background: #e2e8f0;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
-  }
-  :root:not([data-theme="light"]) .cloud-body::before,
-  :root:not([data-theme="light"]) .cloud-body::after {
-    background: #e2e8f0;
-  }
+.cat-sprinkles {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.floating-cloud-track:hover .cloud-body {
-  transform: scale(1.08);
-  filter: drop-shadow(0 6px 14px rgba(220, 38, 38, 0.35));
-}
-
-/* Kebab sauce container & droplets */
-.sauce-ooze-container {
+.sprinkle {
   position: absolute;
-  top: 36px;
-  left: 10px;
-  width: 90px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #be185d;
+}
+
+.s1 { top: 8px; left: 10px; background: #e11d48; }
+.s2 { top: 12px; right: 12px; background: #8b5cf6; }
+.s3 { bottom: 10px; left: 14px; background: #059669; }
+.s4 { bottom: 8px; right: 10px; background: #d97706; }
+
+/* Cat Head */
+.cat-head {
+  position: relative;
+  width: 32px;
+  height: 28px;
+  background: #9ca3af;
+  border: 2px solid #4b5563;
+  border-radius: 50% 50% 45% 45%;
+  margin-left: -8px;
+  z-index: 3;
+}
+
+/* Cat Ears */
+.cat-ear {
+  position: absolute;
+  top: -9px;
+  width: 0;
   height: 0;
-  pointer-events: none;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 9px solid #6b7280;
 }
 
-.sauce-stream {
+.ear-left { left: 2px; }
+.ear-right { right: 2px; }
+
+/* Cat Face Features */
+.cat-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cat-eye {
   position: absolute;
-  border-radius: 4px;
-  background: linear-gradient(180deg, #dc2626 0%, #b91c1c 70%, #991b1b 100%);
-  box-shadow: 0 2px 8px rgba(185, 28, 28, 0.5);
-  opacity: 0;
-  transform-origin: top center;
+  top: 8px;
+  width: 4px;
+  height: 5px;
+  background: #111827;
+  border-radius: 50%;
 }
 
-/* Multiple dripping sauce streams when hovering */
-.floating-cloud-track:hover .sauce-stream-1 {
-  left: 18px;
-  width: 9px;
-  animation: sauceDrip 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+.eye-left { left: 8px; }
+.eye-right { right: 8px; }
+
+.cat-nose {
+  position: absolute;
+  top: 13px;
+  left: 14px;
+  width: 4px;
+  height: 3px;
+  background: #ec4899;
+  border-radius: 50%;
 }
 
-.floating-cloud-track:hover .sauce-stream-2 {
-  left: 38px;
+.cat-cheeks {
+  position: absolute;
+  top: 12px;
+  left: 3px;
+  width: 26px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.7) 30%, transparent 70%);
+}
+
+/* Cat Tail */
+.cat-tail {
+  position: absolute;
+  left: -12px;
+  top: 12px;
   width: 14px;
-  animation: sauceDrip 1.3s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.15s;
+  height: 6px;
+  background: #9ca3af;
+  border: 2px solid #4b5563;
+  border-radius: 6px;
+  transform-origin: right center;
+  animation: tailWiggle 0.4s ease-in-out infinite alternate;
+  z-index: 1;
 }
 
-.floating-cloud-track:hover .sauce-stream-3 {
-  left: 60px;
-  width: 8px;
-  animation: sauceDrip 0.95s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.35s;
+@keyframes tailWiggle {
+  0% { transform: rotate(-15deg); }
+  100% { transform: rotate(15deg); }
 }
 
-/* Garlic yogurt swirl effect in the kebab sauce */
-.sauce-stream::after {
-  content: "";
+/* Paws */
+.cat-paws {
   position: absolute;
-  top: 15%;
-  left: 20%;
-  width: 30%;
-  height: 60%;
-  background: rgba(254, 243, 199, 0.7);
-  border-radius: 3px;
-  filter: blur(1px);
+  bottom: -4px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 3;
 }
 
-@keyframes sauceDrip {
-  0% {
-    height: 4px;
-    opacity: 0;
-    transform: translateY(0) scaleX(1.3);
-  }
-  20% {
-    height: 35px;
-    opacity: 0.95;
-    transform: translateY(0) scaleX(1);
-  }
-  60% {
-    height: 120px;
-    opacity: 0.9;
-  }
-  90% {
-    height: 240px;
-    opacity: 0.75;
-    transform: translateY(20px) scaleX(0.7);
-  }
-  100% {
-    height: 300px;
-    opacity: 0;
-    transform: translateY(60px) scaleX(0.4);
-  }
+.cat-paw {
+  width: 7px;
+  height: 6px;
+  background: #9ca3af;
+  border: 1px solid #4b5563;
+  border-radius: 50%;
 }
+
+/* Sparkles on Hover */
+.sparkles-container {
+  position: absolute;
+  top: -16px;
+  right: -20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  font-size: 14px;
+}
+
+.floating-cat-track:hover .sparkles-container {
+  opacity: 1;
+  animation: sparkleFloat 1s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.2); }
+}
+
 
