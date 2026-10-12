@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azure Cost Quick Wins: 10 säästökohdetta – CloudyMind Solutions Blogi</title>
+  <meta name="description" content="10 helppoa ja nopeaa säästökohdetta Azure-ympäristöstä, joilla voit leikata pilvikustannuksia 15–30 % vaarantamatta tuotantoa.">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="../index.html" class="brand">
+        <span class="brand-icon">☁️</span>
+        <span>CloudyMind Solutions</span>
+      </a>
+
+      <button class="mobile-menu-toggle" aria-label="Avaa valikko">☰</button>
+
+      <ul class="nav-links">
+        <li><a href="../index.html">Etusivu</a></li>
+        <li><a href="../palvelut/index.html">Palvelut</a></li>
+        <li><a href="index.html" class="active">Blogi</a></li>
+        <li><a href="../minusta.html">Minusta</a></li>
+        <li><a href="../yhteys.html">Yhteystiedot</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Vaihda teema">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header class="article-header">
+        <div class="container" style="max-width: 780px;">
+          <div class="post-meta">
+            <span>Julkaistu: 12.10.2026</span>
+            <span>•</span>
+            <span class="post-tag">FinOps</span>
+            <span>•</span>
+            <span class="post-tag">Azure</span>
+            <span>•</span>
+            <span>Kirjoittaja: Jyrki Heinonen</span>
+          </div>
+          <h1 class="article-title">Azure Cost Quick Wins: 10 säästökohdetta, jotka löytyvät lähes jokaisesta ympäristöstä</h1>
+          <p class="hero-desc" style="font-size: 1.15rem; margin-bottom: 0;">
+            Pilvikustannusten optimoinnin ei tarvitse aina tarkoittaa kuukausien koodin uudelleenkirjoitusta. Seuraavat kymmenen kohdetta tuovat välittömiä tuloksia heti ensimmäisellä viikolla.
+          </p>
+        </div>
+      </header>
+
+      <div class="container article-body">
+        <p>
+          Kun organisaatio kasvaa ja kehittäjät saavat vapaat kädet pystyttää resursseja, pilvilasku tuppaa paisumaan huomaamatta. Tuotantoon jää usein pyörimään kokeiluja, poistettujen virtuaalikoneiden levyjä ja vanhentuneita testikantoja.
+        </p>
+
+        <p>
+          Olen tehnyt kymmeniä pilviympäristöjen katselmointeja, ja nämä kymmenen vuotokohtaa toistuvat lähes poikkeuksetta kaikissa yrityksissä koosta riippumatta:
+        </p>
+
+        <h2>1. Orvot managed disk -levyt (Unattached Disks)</h2>
+        <p>
+          Kun virtuaalikone poistetaan Azure-portaalista, sen hallittu levy (Managed Disk) jää oletuksena talteen ja laskutus jatkuu täydellä teholla joka kuukausi. Premium SSD -levyt koossa P20 tai P30 voivat maksaa satoja euroja kuukaudessa tekemättä mitään.
+        </p>
+        <p>
+          <strong>Ratkaisu:</strong> Aja Azure Resource Graph -kysely etsimään levyt tilassa <code>managedBy is empty</code>. Poista tai ota snapshot ennen poistoa.
+        </p>
+
+        <h2>2. Käyttämättömät julkiset IP-osoitteet (Public IPs)</h2>
+        <p>
+          Standard SKU -tason julkiset IP-osoitteet maksavat nykyään myös silloin, kun ne eivät ole liitettynä mihinkään verkkokorttiin tai kuormantasaajaan. Vapaana lojuvat staattiset IP-osoitteet kerryttävät turhaa laskua.
+        </p>
+
+        <h2>3. Vanhat snapshotit ja varmuuskopioiden säilytysajat</h2>
+        <p>
+          Onko teillä levyistä otettuja manuaalisia kokeilusnapshoteja vuodelta 2023? Varmuuskopioiden säilytysaikojen optimointi (esim. lyhentäminen ei-kriittisissä ympäristöissä 30 päivään 365 päivän sijaan) leikkaa Azure Backup- ja storage-kuluja merkittävästi.
+        </p>
+
+        <h2>4. Azure Blob Storage -elinkaarisäännöt (Lifecycle Management)</h2>
+        <p>
+          Dataa säilytetään usein oletuksena kalliissa Hot-tasossa. Ottamalla käyttöön automatisoidut säännöt, joilla yli 30 päivää vanha data siirtyy Cool-tasolle ja yli 180 päivää vanha Archive-tasolle, tallennuskulut voivat pudota jopa 70–80 %.
+        </p>
+
+        <h2>5. Ylimitoitetut App Service Planit ja kehitysympäristöt</h2>
+        <p>
+          Kehitys- ja testiympäristöjen ei tarvitse pyöriä Premium v3 -tasolla 24/7. Usein kehitystiimit pärjäävät B-sarjan tai Basic-tason hinnoittelulla, ja yöajaksi ympäristöt voidaan sammuttaa automaatiolla kokonaan.
+        </p>
+
+        <h2>6. Automaattinen sammutus (Auto-shutdown) testi-virtuaalikoneille</h2>
+        <p>
+          Kytke jokaiseen dev/test-virtuaalikoneeseen Azure-portaalin sisäänrakennettu automaattinen sammutus klo 18:00 joka arkipäivä. Tämä leikkaa kyseisten koneiden laskusta yli 60 % heti.
+        </p>
+
+        <h2>7. Log Analytics Workspace -retentio ja datamäärät</h2>
+        <p>
+          Log Analytics kerää oletuksena kaiken, jos asetuksia ei valvota. Usein sovellukset tulostavat Debug-tason lokia pilveen gigatavuittain päivässä.
+        </p>
+        <ul>
+          <li>Tarkista kalleimmat taulut (usein <code>AppTraces</code> tai <code>ContainerLog</code>).</li>
+          <li>Aseta päivittäinen enimmäiskiintiö (Daily cap) ei-kriittisille ympäristöille.</li>
+          <li>Säädä retention pituus lakisääteisen tai operatiivisen minimin mukaan.</li>
+        </ul>
+
+        <h2>8. Cosmos DB -provisionoidun kapasiteetin tarkastus</h2>
+        <p>
+          Jos Cosmos DB:n läpäisykyky (RU/s) on mitoitettu manuaalisesti hetkellisen huippukuorman mukaan, maksat siitä jatkuvasti. Autoscale-ominaisuuden käyttöönotto tai Serverless-mallin valinta matalan kuorman tietokannoille tuo välittömät säästöt.
+        </p>
+
+        <h2>9. Käyttämättömät Azure Virtual Network Gatewayt ja VPN-yhteydet</h2>
+        <p>
+          Vanhat testiyhteydet toimitiloihin tai vanhoihin projekteihin jäävät usein pyörimään. VNet Gateway maksaa vähintään kymmeniä tai satoja euroja kuukaudessa riippuen SKU:sta, vaikka bittiäkään liikennettä ei kulkisi.
+        </p>
+
+        <h2>10. Azure Reserved Instances ja Savings Plans</h2>
+        <p>
+          Kun peruskuorma ja turhat resurssit on siivottu, jatkuvasti pyöriville tuotantokuormille (VM:t, App Service, SQL Database) kannattaa sitoa 1 tai 3 vuoden Reserved Instances tai Azure Savings Plan. Säästö Pay-as-you-go -hintaan verrattuna on jopa 30–65 %.
+        </p>
+
+        <div class="callout">
+          <h4>💡 Haluatko selvittää oman ympäristösi säästöpotentiaalin?</h4>
+          <p>
+            CloudyMind tarjoaa tuotteistetun <strong>Azure-terveystarkastuksen</strong>, jossa käymme läpi kustannusten vuotokohdat, suorituskykymitoitukset ja tietoturvan. Tyypillisesti säästöt ylittävät tarkastuksen hinnan moninkertaisesti jo ensimmäisen kvartaalin aikana.
+          </p>
+          <div style="margin-top: 1rem;">
+            <a href="../palvelut/index.html#terveystarkastus" class="btn btn-primary">Lue lisää terveystarkastuksesta →</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand">
+            <span class="brand-icon">☁️</span>
+            <span>CloudyMind Solutions</span>
+          </div>
+          <p class="footer-brand-desc">
+            Senior-tason Azure-arkkitehtuuri, pilvihallintamallit, tietoturva ja FinOps-kustannusoptimointi.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Sivut</h5>
+          <ul>
+            <li><a href="../index.html">Etusivu</a></li>
+            <li><a href="../palvelut/index.html">Palvelut</a></li>
+            <li><a href="index.html">Blogi</a></li>
+            <li><a href="../minusta.html">Minusta</a></li>
+            <li><a href="../yhteys.html">Yhteystiedot</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Palvelut</h5>
+          <ul>
+            <li><a href="../palvelut/index.html#terveystarkastus">Azure-terveystarkastus</a></li>
+            <li><a href="../palvelut/index.html#finops">FinOps & Kustannushallinta</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Yritystiedot</h5>
+          <ul>
+            <li>CloudyMind Oy</li>
+            <li>Y-tunnus: 3660736-5</li>
+            <li><a href="mailto:jyrki@cloudymind.fi">jyrki@cloudymind.fi</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 CloudyMind Oy. Kaikki oikeudet pidätetään.</div>
+        <div>Julkaistu GitHub Pages -alustalla.</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
