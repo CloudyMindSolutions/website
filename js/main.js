@@ -21,7 +21,7 @@
   function updateToggleButtons(theme) {
     const btns = document.querySelectorAll('.theme-toggle-btn');
     btns.forEach((btn) => {
-      btn.setAttribute('aria-label', `Vaihda teema (nykyinen: ${theme})`);
+      btn.setAttribute('aria-label', `Toggle theme (current: ${theme})`);
       btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
       btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
     });
@@ -63,5 +63,31 @@
         applyTheme(e.matches ? 'dark' : 'light');
       }
     });
+
+    // Inject Floating Cloud with Kebab Sauce Ooze
+    initFloatingKebabCloud();
   });
+
+  function initFloatingKebabCloud() {
+    if (document.querySelector('.sky-container')) return;
+
+    const sky = document.createElement('div');
+    sky.className = 'sky-container';
+    sky.setAttribute('aria-hidden', 'true');
+
+    sky.innerHTML = `
+      <div class="floating-cloud-track" title="Hover over the cloud for kebab sauce!">
+        <div class="cloud-body">
+          <span class="cloud-label">KEBAB</span>
+        </div>
+        <div class="sauce-ooze-container">
+          <div class="sauce-stream sauce-stream-1"></div>
+          <div class="sauce-stream sauce-stream-2"></div>
+          <div class="sauce-stream sauce-stream-3"></div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(sky);
+  }
 })();

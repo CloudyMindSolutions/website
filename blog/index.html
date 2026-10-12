@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blogi – CloudyMind Solutions</title>
-  <meta name="description" content="Artikkeleita ja käytännön havaintoja Azure-pilviarkkitehtuurista, tietoturvasta, FinOps-kustannussäästöistä ja freelancer-elämästä.">
+  <title>Blog – CloudyMind Oy</title>
+  <meta name="description" content="Technical articles and architectural insights on Microsoft Azure, cloud security, FinOps cost optimization, and independent consulting.">
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/main.js"></script>
 </head>
@@ -13,21 +13,21 @@
     <div class="container nav-wrap">
       <a href="../index.html" class="brand">
         <span class="brand-icon">☁️</span>
-        <span>CloudyMind Solutions</span>
+        <span>CloudyMind Oy</span>
       </a>
 
-      <button class="mobile-menu-toggle" aria-label="Avaa valikko">☰</button>
+      <button class="mobile-menu-toggle" aria-label="Open menu">☰</button>
 
       <ul class="nav-links">
-        <li><a href="../index.html">Etusivu</a></li>
-        <li><a href="../palvelut/index.html">Palvelut</a></li>
-        <li><a href="index.html" class="active">Blogi</a></li>
-        <li><a href="../minusta.html">Minusta</a></li>
-        <li><a href="../yhteys.html">Yhteystiedot</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../services/index.html">Services</a></li>
+        <li><a href="index.html" class="active">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
       </ul>
 
       <div class="nav-actions">
-        <button class="theme-toggle-btn" aria-label="Vaihda teema">🌙</button>
+        <button class="theme-toggle-btn" aria-label="Toggle theme">🌙</button>
       </div>
     </div>
   </header>
@@ -35,12 +35,12 @@
   <main>
     <section class="hero" style="padding: 3.5rem 0 2.5rem;">
       <div class="container">
-        <p class="section-eyebrow">Kokemuksia & Löydöksiä</p>
+        <p class="section-eyebrow">Insights & Architecture</p>
         <h1 class="hero-title" style="font-size: 2.35rem; margin-bottom: 1rem;">
-          Blogi: Azure-arkkitehtuuri, tietoturva & koodi
+          Cloud Architecture, Security & Code
         </h1>
         <p class="hero-desc" style="margin-bottom: 0;">
-          Käytännönläheisiä oppeja tuotantoympäristöistä, vinkkejä pilvikustannusten karsintaan sekä ajatuksia itsenäisenä asiantuntijana toimimisesta.
+          Hands-on lessons learned from high-scale SaaS production environments, actionable FinOps strategies, and independent consulting thoughts.
         </p>
       </div>
     </section>
@@ -51,69 +51,69 @@
           <!-- Article 1 -->
           <div class="card">
             <div class="post-meta">
-              <span>12.10.2026</span>
+              <span>Oct 12, 2026</span>
               <span>•</span>
               <span class="post-tag">FinOps</span>
               <span>•</span>
-              <span>6 min luku</span>
+              <span>6 min read</span>
             </div>
             <h2 class="card-title" style="font-size: 1.25rem;">
-              <a href="azure-cost-quick-wins.html">Azure Cost Quick Wins: 10 säästökohdetta, jotka löytyvät lähes jokaisesta ympäristöstä</a>
+              <a href="azure-cost-quick-wins.html">Azure Cost Quick Wins: 10 Savings You'll Find in Almost Every Environment</a>
             </h2>
             <p class="card-text">
-              Käytännön opas pilvikustannusten karsimiseen. Tunnista orvot managed disk -levyt, käyttämättömät julkiset IP-osoitteet, ylimitoitetut App Service -tasot ja tallennustilan elinkaarimallit.
+              Practical checklist to eliminate cloud waste. Identify unattached disks, unused static public IPs, oversized App Service tiers, and blob lifecycle policies.
             </p>
             <div class="card-footer">
-              <a href="azure-cost-quick-wins.html" class="btn btn-secondary" style="width: 100%; text-align: center;">Lue artikkeli →</a>
+              <a href="azure-cost-quick-wins.html" class="btn btn-secondary" style="width: 100%; text-align: center;">Read Article →</a>
             </div>
           </div>
 
           <!-- Article 2 -->
           <div class="card">
             <div class="post-meta">
-              <span>08.10.2026</span>
+              <span>Oct 8, 2026</span>
               <span>•</span>
-              <span class="post-tag">Tietoturva</span>
+              <span class="post-tag">Security</span>
               <span>•</span>
-              <span>5 min luku</span>
+              <span>5 min read</span>
             </div>
             <h2 class="card-title" style="font-size: 1.25rem;">
-              <a href="expiring-entra-id-secrets.html">Vanhenevat Entra ID -sovellussalaisuudet: löydä ne ennen kuin tuotanto kaatuu</a>
+              <a href="expiring-entra-id-secrets.html">Expiring Entra ID App Secrets: Catch Them Before Production Outages</a>
             </h2>
             <p class="card-text">
-              Sovellustunnusten (App Registrations) salaisuudet ja varmenteet vanhenevat usein yllättäen. Näin automatisoit tarkistuksen ja hälytykset PowerShellillä ja Azure Resource Graphilla.
+              App registrations and client secrets expire when least expected. How to migrate to Managed Identities, workload identity federation (OIDC), and automate audit alerts.
             </p>
             <div class="card-footer">
-              <a href="expiring-entra-id-secrets.html" class="btn btn-secondary" style="width: 100%; text-align: center;">Lue artikkeli →</a>
+              <a href="expiring-entra-id-secrets.html" class="btn btn-secondary" style="width: 100%; text-align: center;">Read Article →</a>
             </div>
           </div>
 
           <!-- Article 3 -->
           <div class="card">
             <div class="post-meta">
-              <span>01.10.2026</span>
+              <span>Oct 1, 2026</span>
               <span>•</span>
               <span class="post-tag">Freelance</span>
               <span>•</span>
-              <span>7 min luku</span>
+              <span>7 min read</span>
             </div>
             <h2 class="card-title" style="font-size: 1.25rem;">
-              <a href="palkkatyosta-freelanceriksi-tuntihinta.html">Palkkatyöstä freelanceriksi: Miten IT-konsultin minimituntihinta lasketaan?</a>
+              <a href="palkkatyosta-freelanceriksi-tuntihinta.html">From Full-Time Employee to IT Freelancer: How to Calculate Your Sustainable Rate</a>
             </h2>
             <p class="card-text">
-              Kuinka laskea kestävä tuntihinta itsenäisenä asiantuntijana? Laskukaava, jossa huomioidaan YEL-työtulo, lomat, sairauspäivävaraus, vakuutukset, koulutus ja realistinen laskutusaste.
+              The math behind sustainable freelance pricing: accounting for pensions, holidays, sick leave reserves, insurances, business buffers, and realistic billable utilization.
             </p>
             <div class="card-footer">
-              <a href="palkkatyosta-freelanceriksi-tuntihinta.html" class="btn btn-secondary" style="width: 100%; text-align: center;">Lue artikkeli →</a>
+              <a href="palkkatyosta-freelanceriksi-tuntihinta.html" class="btn btn-secondary" style="width: 100%; text-align: center;">Read Article →</a>
             </div>
           </div>
         </div>
 
         <!-- Upcoming topics box -->
         <div class="callout" style="margin-top: 3.5rem;">
-          <h4>📝 Tulossa seuraavaksi blogissa:</h4>
+          <h4>📝 Upcoming on the blog:</h4>
           <p style="color: var(--text-muted); margin-top: 0.5rem;">
-            Seuraavia aiheita työpöydällä: <em>"A minimal landing zone with Terraform that grows with you"</em>, <em>"7 Azure Policy -sääntöä joilla jokaisen ympäristön tulisi aloittaa"</em>, sekä <em>"GitHub Actions + Terraform + OIDC ilman tallennettuja salaisuuksia"</em>.
+            Drafting soon: <em>"A Minimal Landing Zone with Terraform That Scales With You"</em>, <em>"7 Azure Policies Every Organization Should Start With"</em>, and <em>"GitHub Actions + Terraform + OIDC Without Stored Secrets"</em>.
           </p>
         </div>
       </div>
@@ -126,44 +126,44 @@
         <div>
           <div class="brand">
             <span class="brand-icon">☁️</span>
-            <span>CloudyMind Solutions</span>
+            <span>CloudyMind Oy</span>
           </div>
           <p class="footer-brand-desc">
-            Senior-tason Azure-arkkitehtuuri, pilvihallintamallit, tietoturva ja FinOps-kustannusoptimointi.
+            Senior Azure cloud architecture, governance models, security, and FinOps cost optimization.
           </p>
         </div>
         <div class="footer-col">
-          <h5>Sivut</h5>
+          <h5>Pages</h5>
           <ul>
-            <li><a href="../index.html">Etusivu</a></li>
-            <li><a href="../palvelut/index.html">Palvelut</a></li>
-            <li><a href="index.html">Blogi</a></li>
-            <li><a href="../minusta.html">Minusta</a></li>
-            <li><a href="../yhteys.html">Yhteystiedot</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../services/index.html">Services</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Aiheet</h5>
+          <h5>Topics</h5>
           <ul>
-            <li>FinOps & Säästöt</li>
-            <li>Azure-arkkitehtuuri</li>
-            <li>Tietoturva & Entra ID</li>
-            <li>Terraform & Automaatio</li>
+            <li>FinOps & Cloud Savings</li>
+            <li>Azure Architecture</li>
+            <li>Security & Entra ID</li>
+            <li>Terraform & Automation</li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Yritystiedot</h5>
+          <h5>Company</h5>
           <ul>
             <li>CloudyMind Oy</li>
-            <li>Y-tunnus: 3660736-5</li>
-            <li>Kotipaikka: Orimattila</li>
+            <li>Business ID: 3660736-5</li>
+            <li>Domicile: Orimattila, Finland</li>
             <li><a href="mailto:jyrki@cloudymind.fi">jyrki@cloudymind.fi</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <div>© 2026 CloudyMind Oy. Kaikki oikeudet pidätetään.</div>
-        <div>Julkaistu GitHub Pages -alustalla.</div>
+        <div>© 2026 CloudyMind Oy. All rights reserved.</div>
+        <div>Published via GitHub Pages.</div>
       </div>
     </div>
   </footer>

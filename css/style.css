@@ -773,3 +773,185 @@ main {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================
+   Floating Cloud & Kebab Sauce Ooze Animation
+   ========================================= */
+
+.sky-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 95px;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: visible;
+}
+
+.floating-cloud-track {
+  position: absolute;
+  top: 12px;
+  left: -180px;
+  animation: floatCloudAcross 26s linear infinite;
+  pointer-events: auto;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes floatCloudAcross {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100vw + 260px));
+  }
+}
+
+/* Cloud visual shape */
+.cloud-body {
+  position: relative;
+  width: 110px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 40px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12), inset 0 -3px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, filter 0.25s ease;
+  user-select: none;
+}
+
+.cloud-body::before,
+.cloud-body::after {
+  content: "";
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.cloud-body::before {
+  width: 50px;
+  height: 50px;
+  top: -24px;
+  left: 18px;
+}
+
+.cloud-body::after {
+  width: 36px;
+  height: 36px;
+  top: -16px;
+  left: 54px;
+}
+
+/* Sauce nozzle indicators */
+.cloud-label {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #b91c1c;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 2;
+}
+
+:root[data-theme="dark"] .cloud-body,
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .cloud-body {
+    background: #e2e8f0;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+  }
+  :root:not([data-theme="light"]) .cloud-body::before,
+  :root:not([data-theme="light"]) .cloud-body::after {
+    background: #e2e8f0;
+  }
+}
+
+.floating-cloud-track:hover .cloud-body {
+  transform: scale(1.08);
+  filter: drop-shadow(0 6px 14px rgba(220, 38, 38, 0.35));
+}
+
+/* Kebab sauce container & droplets */
+.sauce-ooze-container {
+  position: absolute;
+  top: 36px;
+  left: 10px;
+  width: 90px;
+  height: 0;
+  pointer-events: none;
+}
+
+.sauce-stream {
+  position: absolute;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #dc2626 0%, #b91c1c 70%, #991b1b 100%);
+  box-shadow: 0 2px 8px rgba(185, 28, 28, 0.5);
+  opacity: 0;
+  transform-origin: top center;
+}
+
+/* Multiple dripping sauce streams when hovering */
+.floating-cloud-track:hover .sauce-stream-1 {
+  left: 18px;
+  width: 9px;
+  animation: sauceDrip 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.floating-cloud-track:hover .sauce-stream-2 {
+  left: 38px;
+  width: 14px;
+  animation: sauceDrip 1.3s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.15s;
+}
+
+.floating-cloud-track:hover .sauce-stream-3 {
+  left: 60px;
+  width: 8px;
+  animation: sauceDrip 0.95s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.35s;
+}
+
+/* Garlic yogurt swirl effect in the kebab sauce */
+.sauce-stream::after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 30%;
+  height: 60%;
+  background: rgba(254, 243, 199, 0.7);
+  border-radius: 3px;
+  filter: blur(1px);
+}
+
+@keyframes sauceDrip {
+  0% {
+    height: 4px;
+    opacity: 0;
+    transform: translateY(0) scaleX(1.3);
+  }
+  20% {
+    height: 35px;
+    opacity: 0.95;
+    transform: translateY(0) scaleX(1);
+  }
+  60% {
+    height: 120px;
+    opacity: 0.9;
+  }
+  90% {
+    height: 240px;
+    opacity: 0.75;
+    transform: translateY(20px) scaleX(0.7);
+  }
+  100% {
+    height: 300px;
+    opacity: 0;
+    transform: translateY(60px) scaleX(0.4);
+  }
+}
+
