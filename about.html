@@ -5,8 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About – Jyrki Heinonen | CloudyMind Oy</title>
   <meta name="description" content="Senior Azure Cloud Architect Jyrki Heinonen – experience, reference architectures, SaaS cloud platforms, and certifications.">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('cloudymind-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme === 'dark' ? 'dark' : 'light');
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">

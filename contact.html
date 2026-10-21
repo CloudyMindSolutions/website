@@ -5,8 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact – CloudyMind Oy</title>
   <meta name="description" content="Contact CloudyMind Oy / Jyrki Heinonen. Email, company details and project inquiries.">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('cloudymind-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme === 'dark' ? 'dark' : 'light');
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">

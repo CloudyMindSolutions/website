@@ -24,3 +24,28 @@ Sivusto esittelee freelancerina tarjotut Azure-pilviarkkitehtuuripalvelut, tuott
 - `css/style.css` – CSS-tyylit ja muuttujat (Design tokens)
 - `js/main.js` – Teemakytkimen ja mobiilivalikon logiikka
 
+## Sivun lataus ja selaintestit
+
+Jokaisen HTML-sivun `<head>` palauttaa tallennetun teeman pienellä
+inline-skriptillä ennen tyylitiedostoa. Ilman tallennettua valintaa CSS käyttää
+järjestelmän teemaa. `js/main.js` ladataan `defer`-attribuutilla, jotta sen
+lataaminen ei estä sivun sisällön näyttämistä. Säilytä tämä järjestys myös uusilla
+sivuilla: teeman palautus, tyylitiedosto, viivästetty vuorovaikutusskripti.
+
+Sivusto ei tarvitse ajonaikaisia riippuvuuksia tai koontivaihetta. Valinnaiset
+Python-selaintestit käyttävät Playwrightia:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r tests\requirements.txt
+.\.venv\Scripts\python.exe -m playwright install chromium
+.\.venv\Scripts\python.exe tests\test_page_loading.py
+```
+
+Asennettua Microsoft Edgeä voi käyttää Chromium-latauksen sijaan asettamalla
+`$env:BROWSER_CHANNEL = 'msedge'` ennen testien ajamista.
+
+Testit pitävät `main.js`-pyynnön odottamassa ja varmistavat, että kaikki HTML-sivut
+piirtyvät oikealla teemalla jo ennen sen valmistumista. Lisäksi testataan
+teemavalinnan tallennus, järjestelmän teeman muutokset, mobiilivalikko ja sisällön
+näkyminen ilman JavaScriptiä.
