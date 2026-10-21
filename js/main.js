@@ -27,14 +27,11 @@
     });
   }
 
-  // Initialize early
+  // The deferred script runs after the buttons have been parsed.
   const initialTheme = getPreferredTheme();
   applyTheme(initialTheme);
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Sync buttons
-    updateToggleButtons(getPreferredTheme());
-
     // Toggle click listeners
     const btns = document.querySelectorAll('.theme-toggle-btn');
     btns.forEach((btn) => {
