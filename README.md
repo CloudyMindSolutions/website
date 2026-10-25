@@ -1,26 +1,20 @@
-# CloudyMind Solutions – Freelancer-kotisivut & Blogi
+# CloudyMind Oy
 
-CloudyMind Oy:n / Jyrki Heinosen verkkosivusto ja asiantuntijablogi. 
+Static portfolio website for CloudyMind Oy, presenting Azure cloud architecture, governance, security, and FinOps services.
 
-Sivusto esittelee freelancerina tarjotut Azure-pilviarkkitehtuuripalvelut, tuotteistetun Azure-terveystarkastuksen, FinOps-kustannusoptimoinnin sekä julkaisee blogikirjoituksia ja teknisiä löydöksiä.
+## Features
+- Built with semantic HTML, CSS, and vanilla JavaScript.
+- Responsive layout with a soft colour palette, system-based dark theme, and manual theme toggle.
+- Published to GitHub Pages using GitHub Actions (`.github/workflows/deploy.yml`).
+- Includes a sitemap and robots policy for search engines.
 
-## Ominaisuudet
-- **Staattinen ja salamannopea:** Puhdasta HTML5, CSS3 ja kevyttä JavaScriptiä ilman raskaat riippuvuudet.
-- **Pehmeä väripaletti & teematuki:** Sisäänrakennettu tuki järjestelmän oletuksen mukaiselle tummalle teemalle (`prefers-color-scheme: dark`) sekä manuaalinen teemakytkin (Light / Dark mode tallennettuna selaimen muistiin).
-- **GitHub Pages & Actions:** Täysin automatisoitu julkaisu GitHub Actions -työnkululla (`.github/workflows/deploy.yml`).
-- **Valmius omalle domainille:** Sivusto toimii GitHub Pages -osoitteessa sekä tukee suoraan omaa domainia (esim. `cloudymind.fi`) lisäämällä `CNAME`-tiedoston.
-- **SEO & saavutettavuus:** Responsiivinen ulkoasu, semanttinen HTML, `sitemap.xml` ja `robots.txt`.
-
-## Sivurakenne
-- `index.html` – Etusivu (arvolupaus, palvelukortit, uusimmat blogikirjoitukset, yhteenveto minusta ja CTA)
-- `palvelut/index.html` – Palvelut (Azure-terveystarkastus, Landing Zonet, FinOps-kustannushallinta, Governance & tietoturva)
-- `blog/index.html` – Blogin etusivu ja artikkelilistaus
-  - `blog/azure-cost-quick-wins.html` – Azure Cost Quick Wins: 10 säästökohdetta
-  - `blog/expiring-entra-id-secrets.html` – Vanhenevat Entra ID -sovellussalaisuudet
-  - `blog/palkkatyosta-freelanceriksi-tuntihinta.html` – Palkkatyöstä freelanceriksi: Minimituntihinnan laskenta
-- `minusta.html` – Esittely ja tausta (Azure-pilviarkkitehtuuri, SaaS-kokemus, tiimileadius, sertifikaatit)
-- `yhteys.html` – Yhteystiedot, sähköposti, LinkedIn, GitHub ja CloudyMind Oy:n yritystiedot
-- `tietosuoja.html` – Evästeetön ja kevyt tietosuojaseloste
+## Site structure
+- `index.html` – Homepage and service overview
+- `services/index.html` – Service details
+- `about.html` – Professional background
+- `contact.html` – Contact information
+- `privacy.html` – Privacy policy
+- `css/style.css` – Site styling and theme tokens
+- `js/main.js` – Theme toggle and mobile navigation
 - `css/style.css` – CSS-tyylit ja muuttujat (Design tokens)
 - `js/main.js` – Teemakytkimen ja mobiilivalikon logiikka
-
