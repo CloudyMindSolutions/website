@@ -16,3 +16,26 @@ Bilingual static portfolio website for CloudyMind Oy, presenting Azure cloud arc
 - `js/main.js` – Theme toggle and mobile navigation
 - `css/style.css` – CSS-tyylit ja muuttujat (Design tokens)
 - `js/main.js` – Teemakytkimen ja mobiilivalikon logiikka
+
+## Availability badge animation
+
+The English and Finnish homepages share a CSS-only availability badge. Its halo
+animates `transform` and `opacity` instead of repainting a `box-shadow` every
+frame. The solid dot stays the same size and follows the current theme.
+With `prefers-reduced-motion: reduce`, the halo is disabled and the dot stays visible.
+
+### Optional browser regression tests
+
+These development-only tests cover both languages, light/dark themes, mobile and
+desktop sizes, live reduced-motion changes, and the badge without JavaScript.
+They do not add a production build step or runtime dependency.
+
+```powershell
+python -m pip install -r tests\requirements.txt
+python -m playwright install chromium
+python tests\test_pulse_animation.py -v
+```
+
+To use an already-installed Microsoft Edge instead of downloading Chromium,
+skip the browser installation and set `$env:BROWSER_CHANNEL = 'msedge'` before
+running the tests.
